@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Controle de Gastos</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @media print {
+        .no-print {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 p-6">
+    <div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+      <h1 class="text-2xl font-bold mb-4">Controle de Gastos</h1>
+      <form id="expense-form" class="mb-4 no-print">
+        <div class="mb-2">
+          <label for="expense-name" class="block text-sm font-medium text-gray-700">Nome do Gasto</label>
+          <input
+            type="text"
+            id="expense-name"
+            class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            required
+          />
+        </div>
+        <div class="mb-2">
+          <label for="expense-amount" class="block text-sm font-medium text-gray-700">Valor</label>
+          <input
+            type="number"
+            id="expense-amount"
+            class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            required
+          />
+        </div>
+        <div class="mb-2">
+          <label for="expense-limit" class="block text-sm font-medium text-gray-700">Meu Limite de Gasto</label>
+          <input
+            type="number"
+            id="expense-limit"
+            class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          />
+        </div>
+        <button
+          type="submit"
+          class="w-full bg-indigo-600 text-white p-2 rounded-md no-print"
+        >
+          Adicionar Gasto
+        </button>
+      </form>
+      <table class="min-w-full bg-white">
+        <thead>
+          <tr>
+            <th class="px-4 py-2">Nome do Gasto</th>
+            <th class="px-4 py-2">Valor</th>
+            <th class="px-4 py-2 no-print">Ações</th>
+          </tr>
+        </thead>
+        <tbody id="expense-table-body">
+          <!-- Gastos serão adicionados aqui -->
+        </tbody>
+      </table>
+      <div class="mt-4">
+        <strong>Total:</strong> R$ <span id="total-amount">0.00</span>
+      </div>
+      <div class="mt-4">
+        <strong>Limite Restante:</strong> R$ <span id="remaining-limit">0.00</span>
+      </div>
+      <button id="print-ticket" class="mt-4 w-full bg-green-600 text-white p-2 rounded-md no-print">Imprimir Ticket</button>
+      <button id="export-excel" class="mt-4 w-full bg-blue-600 text-white p-2 rounded-md no-print">Exportar para Excel</button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
+    <script>
